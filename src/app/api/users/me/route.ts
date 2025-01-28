@@ -8,6 +8,10 @@ connectDB()
 export async function POST(req: NextRequest) {
     try {
         const userId = await getDataFromToken(req)
+
+        if(!userId) {
+            return NextResponse.json({error: "Unauthorized Access!"}, {status: 400})
+        }
         const loggedInUser = await User.findOne({_id: userId}).select('-password')
 
         if (!loggedInUser) {
