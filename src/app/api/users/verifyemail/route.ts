@@ -20,7 +20,7 @@ export async function POST (req:NextRequest) {
         //if token is already verified
         if(user?.isVerified) {
             return NextResponse.json(
-                { error: "Token already verified!" },
+                { error: "Token already verified!", verified: true },
                 { status: 400 }
             )
         }

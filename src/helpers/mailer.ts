@@ -29,7 +29,7 @@ export const sendMail = async ({ email, emailType, userId, html }: SendMailParam
             })
         }
 
-        const targetURL = `${process.env.DOMAIN}/verifyEmail?token=${hashedToken}` 
+        const targetURL = `${process.env.DOMAIN}/verifyemail?token=${hashedToken}` 
         const parshedHtml = html.replaceAll('[VEARIFICATION_LINK]', targetURL)
 
         const transporter = nodemailer.createTransport({
